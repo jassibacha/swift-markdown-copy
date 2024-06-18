@@ -4,6 +4,13 @@ All notable changes to the "swift-markdown-copy" extension will be documented in
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+
+## [1.0.1] - 2024-06-18
+
+### Added
+
+- Extension icon.
+
 ## [1.0.0] - 2024-06-18
 
 ### Added
