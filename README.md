@@ -1,71 +1,58 @@
-# swift-markdown-copy README
+# Swift Markdown Copy
 
-This is the README for your extension "swift-markdown-copy". After writing up a brief description, we recommend including the following sections.
+Quickly copy entire file contents or a selection of code to markdown for easy pasting to LLMs or anywhere else. Right click file in sidebar, right click in code or use VS Code commands.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Copy Entire File as Markdown**: Right-click on a file in the sidebar to copy the entire file as a markdown code block.
+- **Copy Selection as Markdown**: Right-click in the editor to copy the selected text as a markdown code block.
+- **Copy Entire File from Editor**: Right-click in the editor to copy the entire file as a markdown code block.
+- **VS Code Commands**: Use commands to copy selected text or the entire file as a markdown code block.
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+### Right Click Context Menu Options
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. **Copy Entire File (Sidebar)**:
+   - Right-click on a file in the sidebar and select `Swift Markdown: Copy Entire File as Markdown`.
 
-## Requirements
+2. **Copy Selection (Editor)**:
+   - Select text in the editor, right-click, and select `Swift Markdown: Copy Selection as Markdown`.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+3. **Copy Entire File (Editor)**:
+   - Right-click in the editor text and select `Swift Markdown: Copy Entire File as Markdown`.
 
-## Extension Settings
+### Commands
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- **Copy Selection as Markdown**:
+  - Command: `Swift Markdown: Copy Selection as Markdown`
+  - Usage: Open the command palette (`Ctrl+Shift+P`), type and select `Swift Markdown: Copy Selection as Markdown`.
 
-For example:
+- **Copy Entire File as Markdown**:
+  - Command: `Swift Markdown: Copy Entire File as Markdown`
+  - Usage: Open the command palette (`Ctrl+Shift+P`), type and select `Swift Markdown: Copy Entire File as Markdown`.
 
-This extension contributes the following settings:
+## Installation
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Open VS Code.
+2. Go to the Extensions view by clicking the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
+3. Search for `Swift Markdown Copy` and install the extension.
+4. Reload VS Code.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- No known issues at this time.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
+- Initial release of Swift Markdown Copy.
 
-Initial release of ...
+## Contributing
 
-### 1.0.1
+If you have any suggestions or find a bug, please open an issue or submit a pull request.
 
-Fixed issue #.
+## License
 
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[MIT](LICENSE)

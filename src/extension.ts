@@ -9,31 +9,13 @@ export function activate(context: vscode.ExtensionContext) {
         if (editor) {
             const selection = editor.selection;
             const text = editor.document.getText(selection);
-            const fileExtension = path.extname(editor.document.uri.fsPath).substring(1);
-
-            const codeBlock = `\`\`\`${fileExtension}\n${text}\n\`\`\``;
-            vscode.env.clipboard.writeText(codeBlock).then(() => {
-                vscode.window.showInformationMessage('Selection copied to clipboard as markdown');
-            }, (err) => {
-                vscode.window.showErrorMessage('Failed to copy to clipboard');
-            });
-        } else {
-            vscode.window.showErrorMessage('No active editor found');
-        }
-    });
-
-    // Copy all file contents as markdown code block
-    let copyFileContents = vscode.commands.registerCommand('extension.copyFileContentsAsMarkdown', () => {
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-            const text = editor.document.getText();
             const filePath = editor.document.uri.fsPath;
-            const fileExtension = path.extname(filePath).substring(1);
             const fileName = vscode.workspace.asRelativePath(filePath);
+            const fileExtension = path.extname(filePath).substring(1);
 
             const codeBlock = `*${fileName}*\n\`\`\`${fileExtension}\n${text}\n\`\`\``;
             vscode.env.clipboard.writeText(codeBlock).then(() => {
-                vscode.window.showInformationMessage('File contents copied to clipboard as markdown code block');
+                vscode.window.showInformationMessage('Selection copied to clipboard as markdown code block');
             }, (err) => {
                 vscode.window.showErrorMessage('Failed to copy to clipboard');
             });
@@ -42,9 +24,24 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    // Copy file contents from sidebar as markdown code block
-    let copyFileFromSidebar = vscode.commands.registerCommand('extension.copyFileFromSidebarAsMarkdown', async (uri: vscode.Uri) => {
-        const filePath = uri.fsPath;
+    // Copy all file contents as markdown code block (from both editor and sidebar)
+    let copyFileContents = vscode.commands.registerCommand('extension.copyFileContentsAsMarkdown', async (uri?: vscode.Uri) => {
+        let filePath: string;
+
+        if (uri && uri.fsPath) {
+            // Command invoked from the sidebar
+            filePath = uri.fsPath;
+        } else {
+            // Command invoked from the editor
+            const editor = vscode.window.activeTextEditor;
+            if (editor) {
+                filePath = editor.document.uri.fsPath;
+            } else {
+                vscode.window.showErrorMessage('No active editor found');
+                return;
+            }
+        }
+
         const fileName = vscode.workspace.asRelativePath(filePath);
         const fileExtension = path.extname(filePath).substring(1);
 
@@ -58,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    context.subscriptions.push(copySelection, copyFileContents, copyFileFromSidebar);
+    context.subscriptions.push(copySelection, copyFileContents);
 }
 
 export function deactivate() {}
