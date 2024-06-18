@@ -1,7 +1,7 @@
 {
   "name": "swift-markdown-copy",
   "displayName": "Swift Markdown Copy",
-  "description": "Copy file contents as a markdown code block in three ways: 1) Right-click on a file in the sidebar to copy all contents as markdown, 2) Select text in a file and copy as markdown, 3) Auto select and copy all contents of an open file.",
+  "description": "Quickly copy file contents as a markdown code block in three ways: 1) Right-click on a file in the sidebar to copy all contents as markdown, 2) Select text in a file and copy as markdown, 3) Auto select and copy all contents of an open file.",
   "version": "0.0.1",
   "publisher": "jassi-bacha",
   "engines": {
@@ -11,11 +11,6 @@
     "Programming Languages",
     "Other",
     "Snippets"
-  ],
-  "activationEvents": [
-      "onCommand:extension.copySelectionAsMarkdown",
-      "onCommand:extension.copyFileContentsAsMarkdown",
-      "onCommand:extension.copyFileFromSidebarAsMarkdown"
   ],
   "main": "./out/extension.js",
   "repository": {
@@ -32,15 +27,15 @@
     "commands": [
       {
           "command": "extension.copySelectionAsMarkdown",
-          "title": "Copy Selection as Markdown Code Block"
+          "title": "Swift Markdown: Copy Selection as Markdown"
       },
       {
           "command": "extension.copyFileContentsAsMarkdown",
-          "title": "Copy File Contents as Markdown Code Block"
+          "title": "Swift Markdown: Copy Entire File as Markdown"
       },
       {
           "command": "extension.copyFileFromSidebarAsMarkdown",
-          "title": "Copy File Contents from Sidebar as Markdown Code Block"
+          "title": "Swift Markdown: Copy Entire File as Markdown"
       }
     ],
     "menus": {

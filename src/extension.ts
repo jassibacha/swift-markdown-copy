@@ -1,26 +1,64 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    // Copy selected text as markdown code block
+    let copySelection = vscode.commands.registerCommand('extension.copySelectionAsMarkdown', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            const selection = editor.selection;
+            const text = editor.document.getText(selection);
+            const fileExtension = path.extname(editor.document.uri.fsPath).substring(1);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "swift-markdown-copy" is now active!');
+            const codeBlock = `\`\`\`${fileExtension}\n${text}\n\`\`\``;
+            vscode.env.clipboard.writeText(codeBlock).then(() => {
+                vscode.window.showInformationMessage('Selection copied to clipboard as markdown');
+            }, (err) => {
+                vscode.window.showErrorMessage('Failed to copy to clipboard');
+            });
+        } else {
+            vscode.window.showErrorMessage('No active editor found');
+        }
+    });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('swift-markdown-copy.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Swift Markdown Copy!');
-	});
+    // Copy all file contents as markdown code block
+    let copyFileContents = vscode.commands.registerCommand('extension.copyFileContentsAsMarkdown', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            const text = editor.document.getText();
+            const filePath = editor.document.uri.fsPath;
+            const fileExtension = path.extname(filePath).substring(1);
+            const fileName = vscode.workspace.asRelativePath(filePath);
 
-	context.subscriptions.push(disposable);
+            const codeBlock = `*${fileName}*\n\`\`\`${fileExtension}\n${text}\n\`\`\``;
+            vscode.env.clipboard.writeText(codeBlock).then(() => {
+                vscode.window.showInformationMessage('File contents copied to clipboard as markdown code block');
+            }, (err) => {
+                vscode.window.showErrorMessage('Failed to copy to clipboard');
+            });
+        } else {
+            vscode.window.showErrorMessage('No active editor found');
+        }
+    });
+
+    // Copy file contents from sidebar as markdown code block
+    let copyFileFromSidebar = vscode.commands.registerCommand('extension.copyFileFromSidebarAsMarkdown', async (uri: vscode.Uri) => {
+        const filePath = uri.fsPath;
+        const fileName = vscode.workspace.asRelativePath(filePath);
+        const fileExtension = path.extname(filePath).substring(1);
+
+        try {
+            const data = await fs.promises.readFile(filePath, 'utf8');
+            const codeBlock = `*${fileName}*\n\`\`\`${fileExtension}\n${data}\n\`\`\``;
+            await vscode.env.clipboard.writeText(codeBlock);
+            vscode.window.showInformationMessage('File contents copied to clipboard as markdown code block');
+        } catch (err) {
+            vscode.window.showErrorMessage('Failed to read file contents');
+        }
+    });
+
+    context.subscriptions.push(copySelection, copyFileContents, copyFileFromSidebar);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
