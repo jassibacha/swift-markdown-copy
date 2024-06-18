@@ -23,7 +23,10 @@
     "snippet",
     "code block"
   ],
-  
+  "activationEvents": [
+    "onCommand:extension.copySelectionAsMarkdown",
+    "onCommand:extension.copyFileContentsAsMarkdown"
+  ],
   "contributes": {
     "commands": [
       {
