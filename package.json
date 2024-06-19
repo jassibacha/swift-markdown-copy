@@ -2,10 +2,10 @@
   "name": "swift-markdown-copy",
   "displayName": "Swift Markdown Copy",
   "description": "Quickly copy entire file contents or a selection of code to markdown for easy sharing to LLMs and elsewhere. Right click file in sidebar, right click in code or use VS Code commands.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "jassibacha",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.80.1"
   },
   "categories": [
     "Programming Languages",

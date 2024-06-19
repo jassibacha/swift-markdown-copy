@@ -64,6 +64,10 @@ export default UserPage;
 
 ## Change Log
 
+### [1.0.3] - 2024-06-19
+
+- Added support for VS Code v1.80.1 and up.
+
 ### [1.0.2] - 2024-06-18
 
 - Add Markdown Output to Readme, move Change Log into Readme.
