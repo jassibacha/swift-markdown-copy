@@ -9,6 +9,25 @@ Quickly copy entire file contents or a selection of code to markdown for easy pa
 - **Copy Entire File from Editor**: Right-click in the editor to copy the entire file as a markdown code block.
 - **VS Code Commands**: Use commands to copy selected text or the entire file as a markdown code block.
 
+### Markdown Output
+
+When you use this extension, the copied content will be formatted with the full path and filename, followed by the file extension in the markdown code block.
+
+For example, if you copy the contents of a file located at `src/app/user/page.tsx`, the output will look like this:
+
+````markdown
+*src/app/user/page.tsx*
+```tsx
+import React from 'react';
+
+const UserPage = () => {
+  return <div>User Page</div>;
+};
+
+export default UserPage;
+```
+````
+
 ## Usage
 
 ### Right Click Context Menu Options
@@ -45,9 +64,17 @@ Quickly copy entire file contents or a selection of code to markdown for easy pa
 
 ## Release Notes
 
-### 0.0.1
+### [1.0.1] - 2024-06-18
+
+- Extension icon.
+
+### [1.0.0] - 2024-06-18
 
 - Initial release of Swift Markdown Copy.
+- Added the ability to copy the entire file contents as a markdown code block by right-clicking a file in the sidebar.
+- Added the ability to copy selected text as a markdown code block by right-clicking in the editor.
+- Added the ability to copy the entire file contents as a markdown code block by right-clicking in the editor without any text selection.
+- Added VS Code commands to copy selected text or the entire file contents as a markdown code block.
 
 ## Contributing
 
