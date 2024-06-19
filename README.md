@@ -62,7 +62,11 @@ export default UserPage;
 
 - No known issues at this time.
 
-## Release Notes
+## Change Log
+
+### [1.0.2] - 2024-06-18
+
+- Add Markdown Output to Readme, move Change Log into Readme.
 
 ### [1.0.1] - 2024-06-18
 
