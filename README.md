@@ -9,6 +9,24 @@ Quickly copy entire file contents or a selection of code to markdown for easy pa
 - **Copy Entire File from Editor**: Right-click in the editor to copy the entire file as a markdown code block.
 - **VS Code Commands**: Use commands to copy selected text or the entire file as a markdown code block.
 
+## Settings
+
+You can customize the extension's behavior through VS Code settings:
+
+- **Show Filename**: Show/hide the filename above the code block when copying (default: true)
+- **Add Newline**: Add/remove a newline after the code block when copying (default: true)
+
+To access these settings:
+1. Open VS Code Settings (Ctrl+,)
+2. Search for "Swift Markdown Copy"
+3. Or directly edit your settings.json:
+```json
+{
+    "swiftMarkdownCopy.output.showFilename": true,
+    "swiftMarkdownCopy.output.addNewline": true
+}
+```
+
 ### Markdown Output
 
 When you use this extension, the copied content will be formatted with the full path and filename, followed by the file extension in the markdown code block.
@@ -63,6 +81,11 @@ export default UserPage;
 - No known issues at this time.
 
 ## Change Log
+
+### [1.0.4] - 2025-01-21
+
+- Added configurable settings for showing/hiding filename
+- Added configurable settings for adding newline after code block
 
 ### [1.0.3] - 2024-06-19
 

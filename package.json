@@ -2,7 +2,7 @@
   "name": "swift-markdown-copy",
   "displayName": "Swift Markdown Copy",
   "description": "Quickly copy entire file contents or a selection of code to markdown for easy sharing to LLMs and elsewhere. Right click file in sidebar, right click in code or use VS Code commands.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "jassibacha",
   "engines": {
     "vscode": "^1.80.1"
@@ -39,6 +39,25 @@
         "title": "Swift Markdown: Copy Entire File as Markdown"
       }
     ],
+    "configuration": {
+      "id": "swiftMarkdownCopy",
+      "title": "Swift Markdown Copy",
+      "type": "object",
+      "properties": {
+        "swiftMarkdownCopy.output.showFilename": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Filename",
+          "markdownDescription": "Show the filename above the code block when copying"
+        },
+        "swiftMarkdownCopy.output.addNewline": {
+          "type": "boolean",
+          "default": true,
+          "description": "Add Newline",
+          "markdownDescription": "Add a newline after the code block when copying"
+        }
+      }
+    },
     "menus": {
       "explorer/context": [
         {

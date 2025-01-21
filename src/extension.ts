@@ -19,8 +19,15 @@ export function activate(context: vscode.ExtensionContext) {
             // Get the file extension without the dot
             const fileExtension = path.extname(filePath).substring(1);
 
+            // Get configuration settings
+            const config = vscode.workspace.getConfiguration('swiftMarkdownCopy');
+            const showFilename = config.get('output.showFilename', true);
+            const addNewline = config.get('output.addNewline', true);
+
             // Create the markdown code block
-            const codeBlock = `*${fileName}*\n\`\`\`${fileExtension}\n${text}\n\`\`\``;
+            const filenameText = showFilename ? `*${fileName}*\n` : '';
+            const newlineText = addNewline ? '\n' : '';
+            const codeBlock = `${filenameText}\`\`\`${fileExtension}\n${text}\`\`\`${newlineText}`;
             // Copy the markdown code block to the clipboard
             vscode.env.clipboard.writeText(codeBlock).then(() => {
                 // Show a success message
@@ -61,8 +68,15 @@ export function activate(context: vscode.ExtensionContext) {
         try {
             // Read the file contents
             const data = await fs.promises.readFile(filePath, 'utf8');
+            // Get configuration settings
+            const config = vscode.workspace.getConfiguration('swiftMarkdownCopy');
+            const showFilename = config.get('output.showFilename', true);
+            const addNewline = config.get('output.addNewline', true);
+
             // Create the markdown code block
-            const codeBlock = `*${fileName}*\n\`\`\`${fileExtension}\n${data}\n\`\`\``;
+            const filenameText = showFilename ? `*${fileName}*\n` : '';
+            const newlineText = addNewline ? '\n' : '';
+            const codeBlock = `${filenameText}\`\`\`${fileExtension}\n${data}\`\`\`${newlineText}`;
             // Copy the markdown code block to the clipboard
             await vscode.env.clipboard.writeText(codeBlock);
             // Show a success message
